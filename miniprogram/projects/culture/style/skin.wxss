@@ -1,17 +1,19 @@
 page {
-	background-color: #f1f1f1;
+	background-color: #F4FAF8;
 
-	--projectColor: #C78748;
-	--projectColorLight: #FFBF81;
-	--projectCompareColor: #FFF9EF;
+	--projectColor: #0F8B8D;
+	--projectColorLight: #D6F1ED;
+	--projectCompareColor: #F4FAF8;
+	--projectTextColor: #12343B;
+	--projectAccentColor: #F2A541;
 
 	/*#### 父组件日历颜色定义*/
 	/* 整体颜色 */
 	--calendarPageColor: #fff;
 	/* 加重颜色*/
-	--calendarMainColor: #C78748 !important;
+	--calendarMainColor: #0F8B8D !important;
 	/* 加重的亮颜色 用于选中日期的数据小圆点 */
-	--calendarLightColor: #FA8B14;
+	--calendarLightColor: #F2A541;
 }
 
 .bg-admin {
@@ -77,7 +79,7 @@ page {
 }
 
 .shadow-project {
-	box-shadow: 6rpx 6rpx 20rpx rgba(216, 220, 223, 0.4);
+	box-shadow: 0 12rpx 34rpx rgba(15, 139, 141, 0.12);
 }
 
 .card-project,
@@ -115,4 +117,495 @@ page {
 
 .bar .search-form {
 	background-color: #f6f7fb;
+}
+
+/* ==================== AI 视觉重塑全局样式 ==================== */
+
+/* 1. 首页 AI 悬浮球样式 */
+.ai-float-btn {
+	position: fixed;
+	bottom: 150rpx;
+	right: 30rpx;
+	width: 110rpx;
+	height: 110rpx;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #0F8B8D, #00C2FF, #7000FF);
+	z-index: 99999;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 8rpx 32rpx rgba(15, 139, 141, 0.4);
+	animation: ai-float-breath 3s ease-in-out infinite;
+	overflow: hidden;
+}
+
+.ai-glow {
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+	background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+	animation: ai-glow-rotate 6s linear infinite;
+	pointer-events: none;
+}
+
+.ai-float-btn .ai-icon {
+	font-size: 42rpx !important;
+	color: #ffffff;
+	z-index: 2;
+	text-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.15);
+	margin-top: 4rpx;
+}
+
+.ai-float-btn .ai-text {
+	font-size: 18rpx;
+	color: #ffffff;
+	font-weight: bold;
+	z-index: 2;
+	letter-spacing: 1rpx;
+	margin-top: 2rpx;
+	text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.15);
+}
+
+/* 2. 详情页 AI 私人导游卡片样式 */
+.ai-guide-card {
+	margin-top: 30rpx;
+	background: linear-gradient(135deg, rgba(15, 139, 141, 0.06), rgba(0, 194, 255, 0.04));
+	border-left: 6rpx solid #0f8b8d;
+	border-radius: 16rpx;
+	padding: 24rpx;
+	box-sizing: border-box;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0 4rpx 16rpx rgba(15, 139, 141, 0.03);
+}
+
+.ai-guide-card::after {
+	content: "AI 助手";
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: linear-gradient(135deg, #0F8B8D, #00C2FF);
+	color: #ffffff;
+	font-size: 16rpx;
+	font-weight: bold;
+	padding: 4rpx 14rpx;
+	border-bottom-left-radius: 12rpx;
+	letter-spacing: 1rpx;
+}
+
+.ai-guide-card .ai-header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 12rpx;
+}
+
+.ai-guide-card .ai-card-icon {
+	font-size: 32rpx;
+	color: #0f8b8d;
+	margin-right: 12rpx;
+	animation: ai-icon-pulse 1.5s infinite ease-in-out;
+}
+
+.ai-guide-card .ai-card-title {
+	font-size: 28rpx;
+	font-weight: bold;
+	color: #12343B;
+}
+
+.ai-guide-card .ai-card-body {
+	font-size: 24rpx;
+	color: #6C7A7D;
+	line-height: 1.5;
+	margin-bottom: 16rpx;
+	padding-right: 20rpx;
+}
+
+.ai-guide-card .ai-card-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 24rpx;
+	font-weight: bold;
+	color: #0f8b8d;
+	padding-top: 12rpx;
+	border-top: 1rpx dashed rgba(15, 139, 141, 0.15);
+}
+
+.ai-guide-card .ai-card-footer .icon-right {
+	font-size: 20rpx;
+	transition: transform 0.2s ease;
+}
+
+.ai-guide-card:active {
+	background: linear-gradient(135deg, rgba(15, 139, 141, 0.1), rgba(0, 194, 255, 0.07));
+}
+
+.ai-guide-card:active .ai-card-footer .icon-right {
+	transform: translateX(6rpx);
+}
+
+/* 3. 动画定义 */
+@keyframes ai-float-breath {
+	0%, 100% {
+		transform: translateY(0) scale(1);
+		box-shadow: 0 8rpx 32rpx rgba(15, 139, 141, 0.4);
+	}
+	50% {
+		transform: translateY(-8rpx) scale(1.03);
+		box-shadow: 0 12rpx 40rpx rgba(0, 194, 255, 0.5);
+	}
+}
+
+@keyframes ai-glow-rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes ai-icon-pulse {
+	0%, 100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	50% {
+		transform: scale(1.2);
+		opacity: 0.7;
+	}
+}
+
+/* 4. 个人中心专属 AI 菜单样式 */
+.ai-menu-item {
+	background: linear-gradient(90deg, rgba(15, 139, 141, 0.08), rgba(0, 194, 255, 0.04)) !important;
+	border-left: 8rpx solid #0f8b8d !important;
+	position: relative;
+	overflow: hidden;
+}
+
+.ai-menu-item::before {
+	content: "AI";
+	position: absolute;
+	right: 60rpx;
+	top: -10rpx;
+	font-size: 60rpx;
+	font-weight: 900;
+	color: rgba(15, 139, 141, 0.04);
+	pointer-events: none;
+	font-style: italic;
+}
+
+.ai-list-icon {
+	color: #0f8b8d !important;
+	animation: ai-icon-pulse 2s infinite ease-in-out;
+}
+
+.ai-list-tag {
+	margin-left: 12rpx;
+	font-size: 18rpx;
+	font-weight: bold;
+	background: linear-gradient(135deg, #0F8B8D, #00C2FF);
+	color: #ffffff;
+	padding: 2rpx 10rpx;
+	border-radius: 6rpx;
+	box-shadow: 0 2rpx 6rpx rgba(15, 139, 141, 0.2);
+}
+
+/* ==================== AI 历史时空穿梭镜样式 ==================== */
+.ai-history-section {
+	margin-top: 30rpx;
+	background: #ffffff;
+	border-radius: 24rpx;
+	padding: 24rpx;
+	border: 1rpx solid rgba(15, 139, 141, 0.08);
+	position: relative;
+	overflow: hidden;
+}
+
+.ai-history-section::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 6rpx;
+	background: linear-gradient(90deg, #0F8B8D, #F2A541);
+}
+
+.ai-history-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20rpx;
+}
+
+.ai-history-title {
+	display: flex;
+	align-items: center;
+	font-size: 28rpx;
+	font-weight: bold;
+	color: #12343B;
+}
+
+.ai-history-icon {
+	color: #F2A541;
+	margin-right: 12rpx;
+	font-size: 36rpx;
+	animation: ai-icon-pulse 2s infinite ease-in-out;
+}
+
+.ai-history-tag {
+	font-size: 18rpx;
+	font-weight: bold;
+	background: linear-gradient(135deg, #F2A541, #E56B3F);
+	color: #ffffff;
+	padding: 2rpx 12rpx;
+	border-radius: 6rpx;
+}
+
+.ai-history-scroll {
+	width: 100%;
+	white-space: nowrap;
+}
+
+.ai-history-list {
+	display: inline-flex;
+	padding: 10rpx 0;
+}
+
+.ai-history-card {
+	width: 320rpx;
+	margin-right: 24rpx;
+	background-color: #ffffff;
+	border-radius: 16rpx;
+	box-shadow: 0 4rpx 16rpx rgba(17, 52, 59, 0.06);
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: top;
+	border: 1rpx solid rgba(0, 0, 0, 0.03);
+	transition: all 0.2s ease;
+}
+
+.ai-history-card:last-child {
+	margin-right: 0;
+}
+
+.ai-history-card:active {
+	transform: scale(0.97);
+	background-color: #fcfcfc;
+}
+
+.ai-history-img-wrap {
+	position: relative;
+	width: 320rpx;
+	height: 240rpx;
+	overflow: hidden;
+}
+
+.ai-history-img {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.ai-history-badge {
+	position: absolute;
+	bottom: 12rpx;
+	right: 12rpx;
+	font-size: 18rpx;
+	font-weight: bold;
+	color: #ffffff;
+	background: linear-gradient(135deg, rgba(242, 165, 65, 0.9), rgba(229, 107, 63, 0.9));
+	padding: 4rpx 14rpx;
+	border-radius: 30rpx;
+	box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.ai-history-desc-box {
+	padding: 16rpx;
+	background-color: #ffffff;
+	white-space: normal;
+}
+
+.ai-history-desc {
+	font-size: 22rpx;
+	color: #6C7A7D;
+	line-height: 1.5;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+
+/* AI 景点合照功能样式 */
+.ai-photo-card {
+	background: linear-gradient(135deg, #F0F4FF, #D9E4FF);
+	border-radius: 20rpx;
+	padding: 30rpx;
+	margin-bottom: 30rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 2rpx solid #C2D5FF;
+}
+
+.ai-photo-left {
+	display: flex;
+	align-items: center;
+}
+
+.ai-photo-icon {
+	font-size: 50rpx;
+	color: #4A7AFF;
+	margin-right: 20rpx;
+}
+
+.ai-photo-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.ai-photo-title {
+	font-size: 32rpx;
+	font-weight: bold;
+	color: #112255;
+	margin-bottom: 6rpx;
+}
+
+.ai-photo-subtitle {
+	font-size: 24rpx;
+	color: #4A7AFF;
+}
+
+/* AI 合照弹窗样式 */
+.ai-photo-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.3s;
+}
+
+.ai-photo-modal.show {
+	visibility: visible;
+	opacity: 1;
+}
+
+.ai-photo-mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.7);
+}
+
+.ai-photo-dialog {
+	position: relative;
+	background: #fff;
+	width: 80%;
+	border-radius: 30rpx;
+	padding: 40rpx;
+	z-index: 10000;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.ai-photo-close {
+	position: absolute;
+	top: 20rpx;
+	right: 20rpx;
+	font-size: 40rpx;
+	color: #999;
+	padding: 10rpx;
+}
+
+.ai-photo-content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 30rpx;
+}
+
+.ai-generating-loader {
+	position: relative;
+	width: 120rpx;
+	height: 120rpx;
+	margin-bottom: 30rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loader-circle {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 8rpx solid #E5E9F2;
+	border-top-color: #4A7AFF;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+.ai-generating-icon {
+	font-size: 50rpx;
+	color: #4A7AFF;
+}
+
+@keyframes spin {
+	to { transform: rotate(360deg); }
+}
+
+.ai-generating-text {
+	text-align: center;
+	font-size: 28rpx;
+	color: #666;
+	line-height: 1.6;
+}
+
+.ai-result-title {
+	font-size: 36rpx;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 30rpx;
+}
+
+.ai-result-img {
+	width: 100%;
+	height: 600rpx;
+	border-radius: 20rpx;
+	background-color: #f5f5f5;
+	margin-bottom: 30rpx;
+}
+
+.ai-result-actions {
+	width: 100%;
+}
+
+.ai-btn-save {
+	background: #4A7AFF;
+	color: #fff;
+	border-radius: 50rpx;
+	font-size: 32rpx;
+	padding: 20rpx 0;
+	width: 100%;
+	text-align: center;
+	box-shadow: 0 10rpx 20rpx rgba(74, 122, 255, 0.3);
+}
+
+.ai-btn-save::after {
+	border: none;
 }

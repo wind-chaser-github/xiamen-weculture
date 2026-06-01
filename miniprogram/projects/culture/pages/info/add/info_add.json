@@ -3,5 +3,5 @@
 		"cmpt-form-show": "/cmpts/public/form/form_show/form_show_cmpt"  
 	},
 	"enablePullDownRefresh": true, 
-	"navigationBarTitleText": "写游记"
+	"navigationBarTitleText": "发布灵感"
 }

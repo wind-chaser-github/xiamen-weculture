@@ -91,12 +91,12 @@ AdminActivityBiz.CHECK_FORM = {
 	order: 'formOrder|must|int|min:0|max:9999|name=排序号',
 
 	maxCnt: 'formMaxCnt|must|int|name=人数上限',
-	start: 'formStart|must|string|name=活动开始时间',
-	end: 'formEnd|must|string|name=活动结束时间',
+	start: 'formStart|must|string|name=行程开始时间',
+	end: 'formEnd|must|string|name=行程结束时间',
 	stop: 'formStop|must|string|name=报名截止时间',
 
-	address: 'formAddress|must|string|name=活动地点',
-	addressGeo: 'formAddressGeo|must|object|name=活动地点GEO',
+	address: 'formAddress|must|string|name=集合地点',
+	addressGeo: 'formAddressGeo|must|object|name=集合地点GEO',
 
 	checkSet: 'formCheckSet|must|int|name=审核设置',
 	cancelSet: 'formCancelSet|must|int|name=取消设置',

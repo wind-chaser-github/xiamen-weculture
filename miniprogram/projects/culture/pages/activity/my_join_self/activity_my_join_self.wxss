@@ -1,5 +1,5 @@
 @import "../../../style/skin.wxss"; 
 .load.loading::after {
-    content: "活动自助签到中，请稍候...";
+    content: "行程自助签到中，请稍候...";
 }
  

@@ -62,7 +62,7 @@ Page({
 				titleEn: options.title
 			});
 			wx.setNavigationBarTitle({
-				title: '活动名单 - ' + title
+				title: '行程名单 - ' + title
 			});
 		}
 	},
@@ -146,7 +146,7 @@ Page({
 		let ret = '';
 
 		if (this.data.title)
-			ret += `活动：${this.data.title}\r`;
+			ret += `行程：${this.data.title}\r`;
 
 		for (let k = 0; k < forms.length; k++) {
 			ret += forms[k].title + '：' + forms[k].val + '\r';

@@ -15,7 +15,7 @@ class AdminNewsService extends BaseProjectAdminService {
 
 	/** 推荐首页SETUP */
 	async vouchNews(id, vouch) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/**添加资讯 */
@@ -24,12 +24,12 @@ class AdminNewsService extends BaseProjectAdminService {
 	}) {
 
 
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/**删除资讯数据 */
 	async delNews(id) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 
 	}
@@ -52,7 +52,7 @@ class AdminNewsService extends BaseProjectAdminService {
 		id,
 		hasImageForms
 	}) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
@@ -66,7 +66,7 @@ class AdminNewsService extends BaseProjectAdminService {
 		content // 富文本数组
 	}) {
 
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
@@ -79,7 +79,7 @@ class AdminNewsService extends BaseProjectAdminService {
 		imgList // 图片数组
 	}) {
 
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
@@ -89,7 +89,7 @@ class AdminNewsService extends BaseProjectAdminService {
 	 
 	}) {
 
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
@@ -150,12 +150,12 @@ class AdminNewsService extends BaseProjectAdminService {
 
 	/**修改资讯状态 */
 	async statusNews(id, status) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/**置顶与排序设定 */
 	async sortNews(id, sort) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 }
 

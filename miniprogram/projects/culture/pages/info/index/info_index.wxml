@@ -1,12 +1,17 @@
 <view wx:if="{{!isLoad}}" class="margin-top load loading text-l load-project"></view>
 <block wx:if="{{isLoad}}">
-	<cmpt-comm-list _params="{{_params}}" type="info-list" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="info/list" isTotalMenu="{{true}}" sortMenusDefaultIndex="0" topBottom="120" placeholder="搜索" bind:list="bindCommListCmpt">
+	<cmpt-comm-list _params="{{_params}}" type="info-list" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="info/list" isTotalMenu="{{true}}" sortMenusDefaultIndex="0" topBottom="120" placeholder="搜索旅行灵感" bind:list="bindCommListCmpt">
 
 		<view slot="searchEnd">
 
 		</view>
 
 		<!-- List Begin -->
+		<view class="page-head">
+			<view class="kicker">INSPIRATION</view>
+			<view class="title">厦门旅行灵感</view>
+			<view class="desc">记录海岸、老街、咖啡馆和民宿里的旅行片段。</view>
+		</view>
 		<view class="content-list">
 			<view class="content-left">
 				<block wx:for="{{dataList.list}}" wx:key="list">
@@ -27,7 +32,7 @@
 				<!-- 重点是mode为widthFix -->
 				<view class="content-item-img">
 					<view class="mark">{{INFO_CATE_NAME}}</view>
-					<image src="{{INFO_OBJ.cover}}" class="content-item-img loading" lazy-load="{{true}}" mode="widthFix" />
+					<image src="{{INFO_OBJ.cover[0]}}" class="content-item-img loading" lazy-load="{{true}}" mode="widthFix" />
 					<view class="view">
 						<text class="icon-attention margin-right-xxs"></text>{{INFO_VIEW_CNT}}
 						<text class="icon-comment margin-right-xxs"></text>{{INFO_COMMENT_CNT}}
@@ -43,7 +48,7 @@
 				</view>
 			</view>
 		</template>
-		<!--游记END-->
+		<!--灵感END-->
 		<!-- List END -->
 
 		<!--load begin-->
@@ -55,7 +60,7 @@
 
 
 	<view class="post safe-bottom">
-		<button capture-bind:tap="url" data-url="../add/info_add" class="btn-base btn-project"><text class="icon-add margin-right-xs"></text>写游记</button>
+		<button capture-bind:tap="url" data-url="../add/info_add" class="btn-base btn-project"><text class="icon-add margin-right-xs"></text>发布灵感</button>
 	</view>
 
 

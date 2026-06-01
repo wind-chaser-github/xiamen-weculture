@@ -1,7 +1,7 @@
 @import "../../../style/skin.wxss";
 
 page {
-	background-color: var(--projectCompareColor)
+	background-color: var(--projectCompareColor);
 }
 
 .main {
@@ -38,8 +38,8 @@ page {
 	position: relative;
 	margin-top: -40rpx;
 	background-color: var(--projectCompareColor);
-	border-top-left-radius: 30rpx !important;
-	border-top-right-radius: 30rpx !important;
+	border-top-left-radius: 36rpx !important;
+	border-top-right-radius: 36rpx !important;
 	overflow: hidden;
 }
 
@@ -73,7 +73,8 @@ page {
 .main .down .user-bar .pic .av {
 	height: 110rpx !important;
 	width: 110rpx !important;
-	border: 2rpx solid var(--projectColorLight)
+	border: 4rpx solid #fff;
+	box-shadow: 0 8rpx 24rpx rgba(15, 139, 141, .16);
 }
 
 .main .down .user-bar .detail {
@@ -82,7 +83,7 @@ page {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	color: #333;
+	color: #12343B;
 	box-sizing: border-box;
 }
 
@@ -90,7 +91,7 @@ page {
 	width: 100%;
 	font-size: 30rpx;
 	font-weight: bold;
-	color: #333;
+	color: #12343B;
 	text-align: left;
 }
 
@@ -114,7 +115,7 @@ page {
 }
 
 .my-icon-project {
-	color: #a06d3b !important;
+	color: var(--projectColor) !important;
 	font-size: 30rpx !important;
 }
 
@@ -131,12 +132,12 @@ page {
 
 .comm-list.menu>.item {
 	padding: 0 0rpx;
-	background-color: var(--projectCompareColor);
+	background-color: #fff;
+	margin-bottom: 14rpx;
+	border-radius: 18rpx;
+	padding: 0 24rpx;
 }
 
 .comm-list.menu>.item:after {
-	border-bottom: 1rpx solid #ddd;
-	width: 190%;
-	left: 10rpx;
-	right: 10rpx;
+	border-bottom: 0;
 }

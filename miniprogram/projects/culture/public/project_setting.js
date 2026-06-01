@@ -1,7 +1,7 @@
-module.exports = { //culture
-	PROJECT_COLOR: '#AD683A',
+module.exports = {
+	PROJECT_COLOR: '#0F8B8D',
 	NAV_COLOR: '#ffffff',
-	NAV_BG: '#AD683A',
+	NAV_BG: '#0F8B8D',
 
 
 	// setup
@@ -22,29 +22,29 @@ module.exports = { //culture
 	},
 
 
-	NEWS_NAME: '内容管理',
+	NEWS_NAME: '旅行资讯',
 	NEWS_CATE: [
-		{ id: 1, title: '公告' },
-		{ id: 2, title: '服务' },
+		{ id: 1, title: '出行提示' },
+		{ id: 2, title: '本地服务' },
 
 	],
 	NEWS_FIELDS: [
 	],
 
-	ACTIVITY_NAME: '活动',
+	ACTIVITY_NAME: '行程',
 	ACTIVITY_CATE: [
-		{ id: 1, title: '文旅活动' },
-		{ id: 2, title: '旅行搭子' },
-		{ id: 3, title: '体育活动' },
-		{ id: 4, title: '读书活动' },
-		{ id: 5, title: '亲子活动' },
+		{ id: 1, title: '城市漫游' },
+		{ id: 2, title: '海岛路线' },
+		{ id: 3, title: '美食体验' },
+		{ id: 4, title: '夜游厦门' },
+		{ id: 5, title: '亲子研学' },
 		{ id: 6, title: '其他' },
 	],
 	ACTIVITY_FIELDS: [
 		{ mark: 'time', title: '预计时长(小时)', type: 'digit', must: true },
-		{ mark: 'fee', title: '活动费用', type: 'text', must: true },
-		{ mark: 'desc', title: '活动内容', type: 'content', must: true },
-		{ mark: 'cover', title: '活动封面', type: 'image', min: 1, max: 8, must: true },
+		{ mark: 'fee', title: '参考费用', type: 'text', must: true },
+		{ mark: 'desc', title: '行程亮点', type: 'content', must: true },
+		{ mark: 'cover', title: '行程封面', type: 'image', min: 1, max: 8, must: true },
 	],
 	ACTIVITY_JOIN_FIELDS: [
 		{ mark: 'name', type: 'text', title: '姓名', must: true, max: 30 },
@@ -59,12 +59,12 @@ module.exports = { //culture
 
 	],
 
-	PRODUCT_NAME: '旅行攻略',
+	PRODUCT_NAME: '景点指南',
 	PRODUCT_CATE: [
-		{ id: 1, title: '线路' },
-		{ id: 2, title: '吃喝' },
-		{ id: 3, title: '住宿' },
-		{ id: 4, title: '购物' },
+		{ id: 1, title: '鼓浪屿' },
+		{ id: 2, title: '环岛路' },
+		{ id: 3, title: '沙坡尾' },
+		{ id: 4, title: '集美学村' },
 		{ id: 5, title: '其他' },
 	],
 	PRODUCT_FIELDS: [
@@ -74,12 +74,12 @@ module.exports = { //culture
 	],
 
 
-	INFO_NAME: '游记',
+	INFO_NAME: '旅行灵感',
 	INFO_CATE: [
-		{ id: 1, title: '美景' },
-		{ id: 2, title: '美食' },
-		{ id: 3, title: '美物' },
-		{ id: 4, title: '美居' },
+		{ id: 1, title: '海岸' },
+		{ id: 2, title: '老街' },
+		{ id: 3, title: '咖啡' },
+		{ id: 4, title: '民宿' },
 		{ id: 5, title: '其他' },
 	],
 	INFO_FIELDS: [

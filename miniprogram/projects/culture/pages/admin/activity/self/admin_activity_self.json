@@ -5,5 +5,5 @@
 	"navigationBarBackgroundColor": "#2499f2",
 	"navigationBarTextStyle": "white", 
 	"enablePullDownRefresh": true,  
-	"navigationBarTitleText": "用户活动自助签到码"
+	"navigationBarTitleText": "用户行程自助签到码"
 }

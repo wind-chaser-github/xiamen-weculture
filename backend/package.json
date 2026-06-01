@@ -1,0 +1,15 @@
+{
+	"name": "xiamen-travel-api",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Simple HTTP backend for the Xiamen travel mini program.",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+		"dev": "node server.js"
+	},
+	"license": "UNLICENSED",
+	"dependencies": {
+		"ws": "^8.21.0"
+	}
+}

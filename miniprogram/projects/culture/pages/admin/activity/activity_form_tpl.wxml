@@ -28,7 +28,7 @@
 	<view wx:if="{{formMaxCntFocus}}" class="hint-desc error">{{formMaxCntFocus}}</view>
 
 	<view class="form-group arrow" id="formStart">
-		<view class="title must">活动开始时间</view>
+		<view class="title must">行程开始时间</view>
 		<cmpt-picker-time mark="formStart" mode="fullminute" timeModeStep="5" bind:select="url" data-type="picker" data-item="formStart" endYear="2028" item="{{formStart}}">
 			<view class="form-text">{{formStart||'请选择'}}</view>
 		</cmpt-picker-time>
@@ -36,7 +36,7 @@
 	<view wx:if="{{formStartFocus}}" class="hint-desc error">{{formStartFocus}}</view>
 
 	<view class="form-group arrow" id="formEnd">
-		<view class="title must">活动结束时间</view>
+		<view class="title must">行程结束时间</view>
 		<cmpt-picker-time mark="formEnd" mode="fullminute" timeModeStep="5" bind:select="url" data-type="picker" data-item="formEnd" endYear="2028" item="{{formEnd}}">
 			<view class="form-text">{{formEnd||'请选择'}}</view>
 		</cmpt-picker-time>
@@ -52,11 +52,11 @@
 	<view wx:if="{{formStopFocus}}" class="hint-desc error">{{formStopFocus}}</view>
 
 	<view class="form-group" id="formAddress" bindtap="bindMapTap">
-		<view class="title must">活动地点 <text class="icon-location text-orange text-normal margin-left-xs">选择地图定位</text></view>
+		<view class="title must">集合地点 <text class="icon-location text-orange text-normal margin-left-xs">选择地图定位</text></view>
 		<view class="action">{{formAddress.length}}/500</view>
 	</view>
 	<view class="form-group align-start">
-		<textarea model:value="{{formAddress}}" placeholder-class="phc" placeholder="请填写活动地址" style="min-height:150rpx" auto-height="true" maxlength="500" focus="{{formAddressFocus}}" cursor-spacing="100"></textarea>
+		<textarea model:value="{{formAddress}}" placeholder-class="phc" placeholder="请填写集合地址" style="min-height:150rpx" auto-height="true" maxlength="500" focus="{{formAddressFocus}}" cursor-spacing="100"></textarea>
 	</view>
 	<view wx:if="{{formAddressFocus}}" class="hint-desc error">{{formAddressFocus}}</view>
 </view>

@@ -1,12 +1,38 @@
 @import "../../../style/skin.wxss";
 
 page {
-	background-color: #fff;
+	background-color: var(--projectCompareColor);
+}
+
+.page-head {
+	margin: 20rpx 30rpx 10rpx;
+	padding: 30rpx;
+	border-radius: 26rpx;
+	background: linear-gradient(135deg, #E7F7F4, #FFFFFF);
+}
+
+.page-head .kicker {
+	color: var(--projectColor);
+	font-size: 20rpx;
+	font-weight: 700;
+}
+
+.page-head .title {
+	color: #12343B;
+	font-size: 42rpx;
+	font-weight: 800;
+	margin-top: 10rpx;
+}
+
+.page-head .desc {
+	color: #6C7A7D;
+	font-size: 24rpx;
+	line-height: 1.5;
+	margin-top: 12rpx;
 }
 
 .list {
 	margin-top: 10rpx;
-	background-color: #fff;
 	width: 100%;
 	display: flex;
 	justify-content: flex-start;
@@ -17,7 +43,7 @@ page {
 
 .list .item {
 	width: 50%;
-	padding: 10rpx 15rpx 20rpx;
+	padding: 12rpx 12rpx 22rpx;
 }
 
 .list .item .item-inner {
@@ -26,14 +52,18 @@ page {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	position: relative; 
+	position: relative;
+	background: #fff;
+	border-radius: 22rpx;
+	overflow: hidden;
+	box-shadow: 0 10rpx 28rpx rgba(17, 52, 59, .08);
+	padding-bottom: 18rpx;
 }
 
 .list .item .item-inner .mark {  
-	background-color: var(--projectColor); 
-	background-color: rgba(199, 135, 72, .8);
-	top: 0;
-	right: 10rpx;
+	background-color: rgba(15, 139, 141, .9);
+	top: 16rpx;
+	left: 16rpx;
 	position: absolute;
 	z-index: 9;
 	font-size: 22rpx;
@@ -41,24 +71,96 @@ page {
 	align-items: center;
 	justify-content: center;
 	color: #fff;
-	writing-mode: vertical-rl;
-	padding:14rpx 4rpx;
-	border-bottom-left-radius: 10rpx;
-	border-bottom-right-radius: 10rpx; 
+	padding: 8rpx 14rpx;
+	border-radius: 999rpx;
 }
 
 
 .list .item .item-inner image {
 	width: 100%;
-	height: 220rpx;
-	border-radius: 10rpx; 
+	height: 240rpx;
+	border-radius: 22rpx 22rpx 0 0;
 }
 
 .list .item .item-inner .title {
-	width: 100%;
+	width: calc(100% - 28rpx);
 	text-align: left;
-	color: #333;
+	color: #12343B;
+	font-size: 28rpx;
+	font-weight: 800;
+	margin-top: 18rpx;
+}
+
+.list .item .item-inner .meta {
+	width: calc(100% - 28rpx);
+	color: #7B8B8E;
+	font-size: 22rpx;
+	margin-top: 10rpx;
+}
+
+/* ==================== AI 今日旅行气象站样式 ==================== */
+.ai-weather-station {
+	margin: 20rpx 30rpx 10rpx;
+	padding: 24rpx 30rpx;
+	border-radius: 26rpx;
+	background: linear-gradient(135deg, rgba(15, 139, 141, 0.08), rgba(0, 194, 255, 0.04), #ffffff);
+	border-left: 8rpx solid #0f8b8d;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0 8rpx 32rpx rgba(15, 139, 141, 0.05);
+	animation: ai-ws-fade 0.5s ease-out both;
+}
+
+.ai-ws-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 12rpx;
+}
+
+.ai-ws-title {
+	display: flex;
+	align-items: center;
+	font-size: 26rpx;
+	font-weight: bold;
+	color: #12343B;
+}
+
+.ai-ws-icon {
+	color: #0f8b8d;
+	margin-right: 10rpx;
+	font-size: 32rpx;
+	animation: ai-icon-pulse 1.8s infinite ease-in-out;
+}
+
+.ai-ws-tag {
+	font-size: 18rpx;
+	font-weight: bold;
+	background: linear-gradient(135deg, #0F8B8D, #00C2FF);
+	color: #ffffff;
+	padding: 2rpx 10rpx;
+	border-radius: 6rpx;
+}
+
+.ai-ws-body {
+	width: 100%;
+}
+
+.ai-ws-text {
 	font-size: 24rpx;
-	margin-top: 20rpx;
+	color: #4A5F62;
+	line-height: 1.6;
+	letter-spacing: 0.5rpx;
+}
+
+@keyframes ai-ws-fade {
+	from {
+		opacity: 0;
+		transform: translateY(-10rpx);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
  

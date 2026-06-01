@@ -12,3 +12,24 @@ $RECYCLE.BIN/
 
 # Node.js
 node_modules/
+
+# Credentials and Keys
+*.key
+*.pem
+dev-secret.pem
+*taowhale.com.key
+*taowhale.com.pem
+
+# Backend Local Data and DB
+backend/data/
+backend/node_modules/
+backend/public/uploads/img_*
+backend/public/uploads/gulangyu_*
+backend/public/uploads/shapowei_*
+backend/public/uploads/huandao_*
+backend/public/uploads/jimei_*
+backend/public/uploads/laocheng_*
+backend/public/uploads/photo-*
+
+# IDE Workspace Config
+*.code-workspace

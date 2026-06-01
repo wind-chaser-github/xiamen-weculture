@@ -113,11 +113,25 @@ class PassportBiz extends BaseBiz {
 			});
 		}
 
+		// 获取微信登录 code
+		let code = '';
+		try {
+			const loginRes = await new Promise((resolve, reject) => {
+				wx.login({
+					success: res => resolve(res),
+					fail: err => reject(err)
+				});
+			});
+			code = loginRes.code;
+		} catch (e) {
+			console.error('[PassportBiz] wx.login failed', e);
+		}
+
 		let opt = {
 			title: title || '登录中',
 		};
 
-		let res = await cloudHelper.callCloudSumbit('passport/login', {}, opt).then(result => {
+		let res = await cloudHelper.callCloudSumbit('passport/login', { code }, opt).then(result => {
 			PassportBiz.clearToken();
 			if (result && helper.isDefined(result.data.token) && result.data.token && result.data.token.status == 1) {
 				PassportBiz.setToken(result.data.token);

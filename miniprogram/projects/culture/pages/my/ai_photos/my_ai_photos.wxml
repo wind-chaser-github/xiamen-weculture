@@ -1,0 +1,19 @@
+<view class="main">
+	<view wx:if="{{!list || list.length === 0}}" class="text-center text-grey padding-xl margin-top-xl">
+		<view class="text-xsl margin-bottom"><text class="icon-camera"></text></view>
+		<view>暂无 AI 合照记录，快去景点打卡吧~</view>
+	</view>
+
+	<view wx:else class="photo-list padding">
+		<view class="photo-item" wx:for="{{list}}" wx:key="id">
+			<image class="photo-img" mode="aspectFill" src="{{item.url}}" bindtap="previewImage" data-url="{{item.url}}"></image>
+			<view class="photo-action">
+				<text class="time text-grey text-sm">{{item.createTimeStr}}</text>
+				<view class="btns">
+					<view class="btn-icon text-blue margin-right-sm" bindtap="savePhoto" data-url="{{item.url}}"><text class="icon-down"></text> 下载</view>
+					<view class="btn-icon text-red" bindtap="deletePhoto" data-id="{{item.id}}"><text class="icon-delete"></text> 删除</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

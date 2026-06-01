@@ -15,24 +15,24 @@ class AdminInfoService extends BaseProjectAdminService {
 
 	/** 推荐首页SETUP */
 	async vouchInfo(id, vouch) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/**置顶与排序设定 */
 	async sortInfo(id, sort) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/**删除数据 */
 	async delInfo(id) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
 
 	/**修改状态 */
 	async statusInfo(id, status) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 

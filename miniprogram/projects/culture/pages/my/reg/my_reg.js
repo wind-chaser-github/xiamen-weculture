@@ -119,6 +119,19 @@ Page({
 			data.pic = pic;
 			wx.hideLoading();
 
+			// 获取微信 code 用以绑定 openid
+			try {
+				const loginRes = await new Promise((resolve, reject) => {
+					wx.login({
+						success: res => resolve(res),
+						fail: err => reject(err)
+					});
+				});
+				data.code = loginRes.code;
+			} catch (e) {
+				console.error('[my_reg] wx.login failed', e);
+			}
+
 			data.status = projectSetting.USER_REG_CHECK ? 0 : 1;
 
 			let opts = {

@@ -90,7 +90,7 @@ Page({
 	},
 
 	bindOpenTap:function(e) {
-		fileHelper.openDoc('活动报名名单', this.data.url);
+		fileHelper.openDoc('行程报名名单', this.data.url);
 	},
 
 	url: async function (e) {

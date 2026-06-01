@@ -2,6 +2,8 @@ const pageHelper = require('../../../../../helper/page_helper.js');
 const cloudHelper = require('../../../../../helper/cloud_helper.js');
 const ProjectBiz = require('../../../biz/project_biz.js');
 const ProjectSetting = require('../../../public/project_setting.js');
+const setting = require('../../../../../setting/setting.js');
+const localDemoData = require('../../../public/local_demo_data.js');
 
 Page({
 	/**
@@ -21,6 +23,11 @@ Page({
 	},
 
 	_loadList: async function () {
+		if (setting.BACKEND_MODE === 'local') {
+			this.setData(localDemoData.getHomeData());
+			return;
+		}
+
 		let opts = {
 			title: 'bar'
 		}

@@ -40,7 +40,7 @@
 					</view>
 
 					<view class="info-item">
-						<view class="title">活动时间</view>
+						<view class="title">行程时间</view>
 						<view class="mao">：</view>
 						<view class="content">{{item.ACTIVITY_START}}～{{item.ACTIVITY_END}}</view>
 					</view>

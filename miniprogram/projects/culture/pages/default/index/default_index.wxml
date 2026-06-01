@@ -1,12 +1,22 @@
 <view class="main">
-	<view class="up">
+	<view class="hero">
 		<image mode="widthFix" src="../../../images/home.jpg" />
+		<view class="hero-mask"></view>
+		<view class="hero-copy">
+			<view class="eyebrow">XIAMEN TRAVEL</view>
+			<view class="headline">厦门旅行指南</view>
+			<view class="subline">海岛、老街、美食和慢生活，一屏规划你的厦门假期</view>
+		</view>
 	</view>
 
 	<view class="menu">
-
 		<view class="inner ">
-
+			<view class="section-title">
+				<view>
+					<view class="title">快速出发</view>
+					<view class="desc">按旅途场景找到目的地、路线和灵感</view>
+				</view>
+			</view>
 			<view class="mm">
 				<view bindtap="url" wx:for="{{cateList}}" wx:key="key" data-url="../../news/index/news_index?id={{item.id}}" class="item">
 					<view class="item-inner">
@@ -22,7 +32,7 @@
 						<view class="img shadow-project">
 							<image src="../../../images/menu/p4.png" />
 						</view>
-						<view class="title">旅行攻略</view>
+						<view class="title">景点指南</view>
 					</view>
 				</view>
 				<view bindtap="url" data-type="relaunch" data-url="../../info/index/info_index" class="item">
@@ -30,7 +40,7 @@
 						<view class="img shadow-project">
 							<image src="../../../images/menu/p5.png" />
 						</view>
-						<view class="title">游记</view>
+						<view class="title">旅行灵感</view>
 					</view>
 				</view>
 
@@ -39,20 +49,92 @@
 						<view class="img shadow-project">
 							<image src="../../../images/menu/p3.png" />
 						</view>
-						<view class="title">活动日历</view>
+						<view class="title">行程日历</view>
 					</view>
 				</view>
 			</view>
-
-
 		</view>
 	</view>
 
-	<!-- 旅行攻略 begin -->
+	<view class="inspire">
+		<view class="inspire-card primary" bindtap="url" data-url="../../product/index/product_index">
+			<view class="kicker">CITY WALK</view>
+			<view class="name">鼓浪屿到沙坡尾</view>
+			<view class="text">适合初到厦门的经典一日路线</view>
+		</view>
+		<view class="inspire-card secondary" bindtap="url" data-url="../../activity/index/activity_index">
+			<view class="kicker">LOCAL ROUTE</view>
+			<view class="name">海边日落计划</view>
+			<view class="text">环岛路、黄厝、音乐广场</view>
+		</view>
+	</view>
+
+	<!-- AI 智能文旅空间 begin -->
+	<view class="area margin-top-sm">
+		<view class="hot-line">
+			<view>
+				<view class="left text-bold flex-row" style="display: flex; align-items: center;">
+					<text class="icon-communitymy text-project" style="margin-right: 12rpx; font-size: 36rpx;"></text>
+					<text>AI 智能空间</text>
+					<text class="ai-badge">阿鹭带玩</text>
+				</view>
+				<view class="hint">行程规划、避坑指南、本地文化深度互动</view>
+			</view>
+		</view>
+
+		<view class="ai-space-card shadow-project">
+			<view class="ai-space-header">
+				<view class="ai-avatar-wrap">
+					<view class="ai-avatar-glow"></view>
+					<image src="/projects/culture/images/tabbar/home_cur.png" class="ai-avatar-img" mode="aspectFill" />
+					<view class="ai-online-dot"></view>
+				</view>
+				<view class="ai-intro">
+					<view class="ai-name">厦门文旅专属 AI 导游 “阿鹭”</view>
+					<view class="ai-status">基于 Nuwa-Cortex 厦门旅游专家模型驱动</view>
+				</view>
+			</view>
+			
+			<view class="ai-tools-list">
+				<view class="ai-tool-item" bindtap="url" data-url="../../my/ai_chat/my_ai_chat?prompt=帮我定制一份3天经典的厦门自由行自由行程，想看海和特色老街">
+					<text class="icon-calendar text-project ai-tool-icon"></text>
+					<view class="ai-tool-info">
+						<view class="ai-tool-title">AI 行程定制</view>
+						<view class="ai-tool-desc">一键规划3天经典自由行</view>
+					</view>
+					<text class="icon-right text-grey"></text>
+				</view>
+				
+				<view class="ai-tool-item" bindtap="url" data-url="../../my/ai_chat/my_ai_chat?prompt=去曾厝垵、沙坡尾和鼓浪屿玩，有什么需要注意的本地人防坑避堵指南？">
+					<text class="icon-warn text-project ai-tool-icon"></text>
+					<view class="ai-tool-info">
+						<view class="ai-tool-title">厦门避坑指南</view>
+						<view class="ai-tool-desc">防骗避雷与避堵出行攻略</view>
+					</view>
+					<text class="icon-right text-grey"></text>
+				</view>
+
+				<view class="ai-tool-item" bindtap="url" data-url="../../my/ai_chat/my_ai_chat?prompt=跟我讲讲厦门的闽南红砖古厝历史以及有趣的厦门方言，能科普一下吗？">
+					<text class="icon-comment text-project ai-tool-icon"></text>
+					<view class="ai-tool-info">
+						<view class="ai-tool-title">闽南文化科普</view>
+						<view class="ai-tool-desc">解密红砖古厝与趣味方言</view>
+					</view>
+					<text class="icon-right text-grey"></text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- AI 智能文旅空间 END -->
+
+	<!-- 景点指南 begin -->
 	<view class="area">
 		<view class="hot-line" bindtap="url" data-url="../../product/index/product_index">
-			<view class="left">旅行攻略</view>
-			<view class="right">更多»</view>
+			<view>
+				<view class="left">景点指南</view>
+				<view class="hint">鼓浪屿、环岛路、集美学村等目的地</view>
+			</view>
+			<view class="right">全部</view>
 		</view>
 
 		<view wx:if="{{!productList}}" class="margin-top load loading text-l load-project"></view>
@@ -71,13 +153,16 @@
 			</view>
 		</scroll-view>
 	</view>
-	<!-- 旅行攻略 END -->
+	<!-- 景点指南 END -->
 
-	<!-- 活动推荐 begin -->
+	<!-- 行程推荐 begin -->
 	<view class="area">
 		<view class="hot-line" bindtap="url" data-url="../../activity/index/activity_index">
-			<view class="left">活动推荐</view>
-			<view class="right">更多»</view>
+			<view>
+				<view class="left">精选行程</view>
+				<view class="hint">城市漫游、海岛路线与本地体验</view>
+			</view>
+			<view class="right">全部</view>
 		</view>
 		<view wx:if="{{!activityList}}" class="margin-top load loading text-l load-project"></view>
 
@@ -94,13 +179,16 @@
 			</view>
 		</scroll-view>
 	</view>
-	<!-- 活动推荐 END -->
+	<!-- 行程推荐 END -->
 
-	<!--游记begin-->
+	<!--灵感begin-->
 	<view class="area">
-		<view class="hot-line" bindtap="url" data-url="../../meet/index/meet_index?id=1">
-			<view class="left">热门游记</view>
-			<view class="right">更多»</view>
+		<view class="hot-line" bindtap="url" data-url="../../info/index/info_index">
+			<view>
+				<view class="left">旅行灵感</view>
+				<view class="hint">看看其他人怎么逛厦门</view>
+			</view>
+			<view class="right">全部</view>
 		</view>
 		<view wx:if="{{!infoList}}" class="margin-top load loading text-l load-project"></view>
 
@@ -125,7 +213,7 @@
 			<!-- 重点是mode为widthFix -->
 			<view class="content-item-img">
 				<view class="mark">{{INFO_CATE_NAME}}</view>
-				<image src="{{INFO_OBJ.cover}}" class="content-item-img loading" lazy-load="{{true}}" mode="widthFix" />
+				<image src="{{INFO_OBJ.cover[0]}}" class="content-item-img loading" lazy-load="{{true}}" mode="widthFix" />
 			</view>
 
 			<view class="content-item-box">
@@ -137,9 +225,16 @@
 			</view>
 		</view>
 	</template>
-	<!--游记END-->
+	<!--灵感END-->
 
 	<view style="height: 200rpx;"></view>
+
+	<!-- AI 智能厦门文旅悬浮球 -->
+	<view class="ai-float-btn shadow-project" bindtap="url" data-url="../../my/ai_chat/my_ai_chat">
+		<view class="ai-glow"></view>
+		<text class="icon-communitymy ai-icon"></text>
+		<view class="ai-text">问阿鹭</view>
+	</view>
 </view>
 
 <block wx:if="{{skin.IS_SUB}}">

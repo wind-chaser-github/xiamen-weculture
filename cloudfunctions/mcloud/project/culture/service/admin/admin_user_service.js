@@ -87,12 +87,12 @@ class AdminUserService extends BaseProjectAdminService {
 	}
 
 	async statusUser(id, status, reason) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/**删除用户 */
 	async delUser(id) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
@@ -111,7 +111,7 @@ class AdminUserService extends BaseProjectAdminService {
 	/**导出用户数据 */
 	async exportUserDataExcel(condition, fields) {
 
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 

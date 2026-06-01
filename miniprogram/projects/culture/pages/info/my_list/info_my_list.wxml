@@ -46,7 +46,7 @@
 	<!--  button END -->
 
 	<view class="post safe-bottom">
-		<button capture-bind:tap="url" data-url="../add/info_add" class="btn-base btn-project shadow"><text class="icon-post margin-right-xs"></text>写游记</button>
+		<button capture-bind:tap="url" data-url="../add/info_add" class="btn-base btn-project shadow"><text class="icon-post margin-right-xs"></text>发布灵感</button>
 	</view>
 
 </block>

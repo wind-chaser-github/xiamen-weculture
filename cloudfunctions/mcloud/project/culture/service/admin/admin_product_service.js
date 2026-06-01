@@ -16,7 +16,7 @@ class AdminProductService extends BaseProjectAdminService {
 
 	/** 推荐首页SETUP */
 	async vouchProduct(id, vouch) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/**添加 */
@@ -26,12 +26,12 @@ class AdminProductService extends BaseProjectAdminService {
 
 
 		// 重复性判断
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/**删除数据 */
 	async delProduct(id) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 
 	}
@@ -54,7 +54,7 @@ class AdminProductService extends BaseProjectAdminService {
 		id,
 		hasImageForms
 	}) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
@@ -64,7 +64,7 @@ class AdminProductService extends BaseProjectAdminService {
 
 	}) {
 
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
@@ -128,18 +128,18 @@ class AdminProductService extends BaseProjectAdminService {
 
 	/**修改状态 */
 	async statusProduct(id, status) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/**置顶与排序设定 */
 	async sortProduct(id, sort) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
 	/**首页设定 */
 	async vouchProduct(id, vouch) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 }

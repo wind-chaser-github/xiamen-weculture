@@ -31,6 +31,7 @@ function imgSizeCheck(size, maxSize) {
 }
 
 async function imgCheckCloud(path, opt) {
+	if (setting.BACKEND_MODE !== 'cloud') return true;
  
 	
 	/*
@@ -73,6 +74,7 @@ async function imgCheckCloud(path, opt) {
  * @param {*} imgData 
  */
 async function imgCheck(imgData) { 
+	if (setting.BACKEND_MODE !== 'cloud') return true;
 
 	let result = await wx.serviceMarket.invokeService({
 		service: 'wxee446d7507c68b11',

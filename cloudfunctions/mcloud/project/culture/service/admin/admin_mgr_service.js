@@ -155,7 +155,7 @@ class AdminMgrService extends BaseProjectAdminService {
 
 	/** 删除管理员 */
 	async delMgr(id, myAdminId) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/** 添加新的管理员 */
@@ -165,13 +165,13 @@ class AdminMgrService extends BaseProjectAdminService {
 		phone,
 		password
 	}) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
 	/** 修改状态 */
 	async statusMgr(id, status, myAdminId) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 
@@ -196,13 +196,13 @@ class AdminMgrService extends BaseProjectAdminService {
 		password
 	}) {
 
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/** 修改自身密码 */
 	async pwdtMgr(adminId, oldPassword, password) {
 
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 }
 

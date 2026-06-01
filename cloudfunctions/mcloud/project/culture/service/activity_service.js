@@ -20,9 +20,9 @@ class ActivityService extends BaseProjectService {
 		let timestamp = this._timestamp;
 
 		if (activity.ACTIVITY_STATUS == 0)
-			return '活动停止';
+			return '行程停止';
 		else if (activity.ACTIVITY_END <= timestamp)
-			return '活动结束';
+			return '行程结束';
 		else if (activity.ACTIVITY_STOP <= timestamp)
 			return '报名结束';
 		else if (activity.ACTIVITY_MAX_CNT > 0
@@ -309,7 +309,7 @@ class ActivityService extends BaseProjectService {
 		}
 		let activity = await ActivityModel.getOne(where, fields);
 		if (!activity)
-			this.AppError('该活动不存在');
+			this.AppError('该行程不存在');
 
 
 		// 取出本人最近一次的填写表单
@@ -343,20 +343,20 @@ class ActivityService extends BaseProjectService {
 		}
 
 		if (activityJoin.ACTIVITY_JOIN_IS_CHECKIN == 1)
-			this.AppError('该活动已经签到，无法取消');
+			this.AppError('该行程已经签到，无法取消');
 
 		let activity = await ActivityModel.getOne(activityJoin.ACTIVITY_JOIN_ACTIVITY_ID);
 		if (!activity)
-			this.AppError('该活动不存在');
+			this.AppError('该行程不存在');
 
 		if (activity.ACTIVITY_END <= this._timestamp)
-			this.AppError('该活动已经结束，无法取消');
+			this.AppError('该行程已经结束，无法取消');
 
 		if (activity.ACTIVITY_CANCEL_SET == 0)
-			this.AppError('该活动不能取消');
+			this.AppError('该行程不能取消');
 
 		if (activity.ACTIVITY_CANCEL_SET == 2 && activity.ACTIVITY_STOP < this._timestamp)
-			this.AppError('该活动已经截止报名，不能取消');
+			this.AppError('该行程已经截止报名，不能取消');
 
 		await ActivityJoinModel.del(where);
 
@@ -369,13 +369,13 @@ class ActivityService extends BaseProjectService {
 	async myJoinSelf(userId, activityId) {
 		let activity = await ActivityModel.getOne(activityId);
 		if (!activity)
-			this.AppError('活动不存在或者已经关闭');
+			this.AppError('行程不存在或者已经关闭');
 
 		let day = timeUtil.timestamp2Time(activity.ACTIVITY_START, 'Y-M-D');
 
 		let today = timeUtil.time('Y-M-D');
 		if (day != today)
-			this.AppError('仅在活动当天可以签到，当前签到码的日期是' + day);
+			this.AppError('仅在行程当天可以签到，当前签到码的日期是' + day);
 
 		let whereSucc = {
 			ACTIVITY_JOIN_USER_ID: userId,
@@ -392,10 +392,10 @@ class ActivityService extends BaseProjectService {
 
 		let ret = '';
 		if (cntSucc == 0) {
-			ret = '您没有本次活动报名成功的记录，请在「个人中心 - 我的活动报名」查看详情~';
+			ret = '您没有本次行程报名成功的记录，请在「个人中心 - 我的行程报名」查看详情~';
 		} else if (cntSucc == cntCheckin) {
 			// 同一活动多次报名的情况
-			ret = '您已签到，无须重复签到，请在「个人中心 - 我的活动报名」查看详情~';
+			ret = '您已签到，无须重复签到，请在「个人中心 - 我的行程报名」查看详情~';
 		} else {
 			let where = {
 				ACTIVITY_JOIN_USER_ID: userId,
@@ -407,7 +407,7 @@ class ActivityService extends BaseProjectService {
 				ACTIVITY_JOIN_CHECKIN_TIME: this._timestamp,
 			}
 			await ActivityJoinModel.edit(where, data);
-			ret = '签到成功，请在「个人中心 - 我的活动报名」查看详情~'
+			ret = '签到成功，请在「个人中心 - 我的行程报名」查看详情~'
 		}
 		return {
 			ret

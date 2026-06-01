@@ -41,13 +41,30 @@
 
 		</view>
 
+		<!-- AI 灵感解读卡片 -->
+		<view class="ai-guide-card shadow-project" bindtap="onAiAsk" data-title="{{info.INFO_OBJ.title}}">
+			<view class="ai-header">
+				<text class="icon-communitymy ai-card-icon"></text>
+				<text class="ai-card-title">AI 私人导游阿鹭·灵感解读</text>
+			</view>
+			<view class="ai-card-body">
+				<view wx:if="{{!aiSummary}}" class="ai-card-loading">
+					<text class="icon-loading loading" style="margin-right: 10rpx;"></text>阿鹭正在解读该灵感的特色和游玩指引...
+				</view>
+				<text wx:else user-select="{{true}}" class="ai-summary-text">{{aiSummary}}</text>
+			</view>
+			<view class="ai-card-footer">
+				<text>点击与阿鹭深度对话，定制专属行程</text>
+				<text class="icon-right"></text>
+			</view>
+		</view>
 
 	</view>
 
 	<view style="height:200rpx"></view>
 
 
-	<cmpt-detail mode="mode2" topBtnShow="{{topBtnShow}}" tag="" oid="{{info._id}}" cate="{{info.INFO_CATE_NAME}}" title="{{info.INFO_OBJ.title}}" cover="{{info.INFO_OBJ.cover[0]}}" qr="{{info.INFO_QR}}" desc="查看游记详情" bg="{{skin.PROJECT_COLOR}}">
+	<cmpt-detail mode="mode2" topBtnShow="{{topBtnShow}}" tag="" oid="{{info._id}}" cate="{{info.INFO_CATE_NAME}}" title="{{info.INFO_OBJ.title}}" cover="{{info.INFO_OBJ.cover[0]}}" qr="{{info.INFO_QR}}" desc="查看旅行灵感" bg="{{skin.PROJECT_COLOR}}">
 		<view class="bottom-line">
 			<view bindtap="url" data-url="../../comment/list/comment_list?id={{id}}&type=info" class="join comment   margin-right">评论 <text wx:if="{{info.INFO_COMMENT_CNT>0}}">({{info.INFO_COMMENT_CNT}})</text></view>
 

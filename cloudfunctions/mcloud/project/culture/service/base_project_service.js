@@ -53,8 +53,8 @@ class BaseProjectService extends BaseService {
 
 
 		const NEWS_CATE = '1=公告通知';
-		const ACTIVITY_CATE = '1=文旅活动,2=旅行搭子,3=体育活动,4=读书活动,5=亲子活动,6=其他';
-		const PRODUCT_CATE = '1=线路,2=吃喝,3=住宿,4=购物,5=其他';
+		const ACTIVITY_CATE = '1=城市漫游,2=海岛路线,3=美食体验,4=夜游厦门,5=亲子研学,6=其他';
+		const PRODUCT_CATE = '1=鼓浪屿,2=环岛路,3=沙坡尾,4=集美学村,5=其他';
 
 
 		if (await dbUtil.isExistCollection(F(INSTALL_CL))) {

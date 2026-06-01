@@ -9,7 +9,8 @@ async function config1({
     user = '',
     avatar = '' //头像
 }) {
-	if (cover.startsWith('cloud'))
+	if (Array.isArray(cover)) cover = cover[0] || '';
+	if (cover && cover.startsWith('cloud'))
 		cover = await cloudHelper.getTempFileURLOne(cover);
 
 	if (qr.startsWith('cloud'))

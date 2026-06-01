@@ -83,7 +83,7 @@ class AdminActivityService extends BaseProjectAdminService {
 
 	/**置顶与排序设定 */
 	async sortActivity(id, sort) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/**获取信息 */
@@ -103,7 +103,7 @@ class AdminActivityService extends BaseProjectAdminService {
 
 	/**首页设定 */
 	async vouchActivity(id, vouch) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
@@ -112,20 +112,20 @@ class AdminActivityService extends BaseProjectAdminService {
 
 	}) {
 
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	//#############################   
 	/** 清空 */
 	async clearActivityAll(activityId) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
 
 	/**删除数据 */
 	async delActivity(id) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
@@ -134,7 +134,7 @@ class AdminActivityService extends BaseProjectAdminService {
 		id,
 		hasImageForms
 	}) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
@@ -143,12 +143,12 @@ class AdminActivityService extends BaseProjectAdminService {
 
 	}) {
 
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/**修改状态 */
 	async statusActivity(id, status) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	//#############################
@@ -203,36 +203,36 @@ class AdminActivityService extends BaseProjectAdminService {
 	/**修改报名状态  
 	 */
 	async statusActivityJoin(activityJoinId, status, reason = '') {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
 
 	/** 取消某项目的所有报名记录 */
 	async cancelActivityJoinAll(activityId, reason) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/** 删除报名 */
 	async delActivityJoin(activityJoinId) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 
 	/** 自助签到码 */
 	async genActivitySelfCheckinQr(page, activityId) {
 
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/** 管理员按钮核销 */
 	async checkinActivityJoin(activityJoinId, flag) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	/** 管理员扫码核销 */
 	async scanActivityJoin(activityId, code) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 	}
 
 	// #####################导出报名数据
@@ -251,7 +251,7 @@ class AdminActivityService extends BaseProjectAdminService {
 		activityId,
 		status
 	}) {
-		this.AppError('[文旅]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		this.AppError('该功能暂未开放，请联系平台管理员');
 
 	}
 }

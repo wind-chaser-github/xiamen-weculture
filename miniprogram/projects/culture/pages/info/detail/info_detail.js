@@ -10,7 +10,7 @@ Page({
 	 */
 	data: {
 		isLoad: false,
-
+		aiSummary: ''
 	},
 
 	/**
@@ -45,6 +45,24 @@ Page({
 		this.setData({
 			isLoad: true,
 			info,
+			aiSummary: ''
+		});
+
+		// 异步静默加载 AI 对该旅行灵感的精髓与亮点提炼
+		cloudHelper.callCloudData('ai/summarize', { type: 'info', title: info.INFO_OBJ.title }, { title: 'bar' }).then(res => {
+			if (res && res.summary) {
+				this.setData({
+					aiSummary: res.summary
+				});
+			} else {
+				this.setData({
+					aiSummary: '智能导游阿鹭暂未总结此灵感精髓，点击直接对话提问！'
+				});
+			}
+		}).catch(err => {
+			this.setData({
+				aiSummary: '智能导游阿鹭暂未总结此灵感精髓，点击直接对话提问！'
+			});
 		});
 	},
 
@@ -98,6 +116,13 @@ Page({
 	},
 	url: function (e) {
 		pageHelper.url(e, this);
+	},
+
+	onAiAsk: function (e) {
+		const title = e.currentTarget.dataset.title;
+		wx.navigateTo({
+			url: `../../my/ai_chat/my_ai_chat?prompt=我想针对旅行灵感“${title}”定制详细的规划，能帮我把这个灵感扩展为具体的日程玩法、交通以及防坑建议吗？`
+		});
 	},
 
 	onShareAppMessage: function (res) {

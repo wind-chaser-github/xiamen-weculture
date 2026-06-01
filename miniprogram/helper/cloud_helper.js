@@ -12,6 +12,7 @@ const contentCheckHelper = require('../helper/content_check_helper.js');
 const pageHelper = require('../helper/page_helper.js');
 const timeHelper = require('../helper/time_helper.js');
 const setting = require('../setting/setting.js');
+const localDemoData = require('../projects/culture/public/local_demo_data.js');
 
 const CODE = {
 	SUCC: 200,
@@ -52,7 +53,9 @@ async function callCloudData(route, params = {}, options) {
 
 	if (result && helper.isDefined(result.data)) {
 		result = result.data;
-		if (Array.isArray(result)) {
+		if (result === null || result === undefined) {
+			result = null;
+		} else if (Array.isArray(result)) {
 			// 数组处理
 		} else if (Object.keys(result).length == 0) {
 			result = null; //对象处理
@@ -107,6 +110,49 @@ function callCloud(route, params = {}, options) {
 
 		let PID = pageHelper.getPID();
 
+		if (setting.BACKEND_MODE === 'local') {
+			resolve({
+				code: CODE.SUCC,
+				data: localDemoData.getRouteData(route, params)
+			});
+			return;
+		}
+
+		if (setting.BACKEND_MODE === 'http') {
+			let requestTimeout = 15000;
+			if (route.indexOf('ai/') > -1) {
+				requestTimeout = 60000; // 延长 AI 长周期会话的超时时间
+			}
+			wx.request({
+				url: setting.API_BASE_URL + '/api/miniprogram',
+				method: 'POST',
+				data: { route, token, PID, params },
+				timeout: requestTimeout,
+				success: function (res) {
+					let result = res.data;
+					if (!result || !helper.isDefined(result.code)) {
+						result = { code: CODE.SVR, msg: '服务器返回格式错误' };
+					}
+					handleCallResult(result, resolve, reject, hint);
+				},
+				fail: function (err) {
+					console.error(`[API Network Error] route: ${route}, errMsg: ${err.errMsg || 'unknown'}, detail:`, err);
+					if (hint) {
+						wx.showModal({
+							title: '',
+							content: '服务器连接失败，请检查 API_BASE_URL 或本地服务',
+							showCancel: false
+						});
+					}
+					reject(err);
+				},
+				complete: function () {
+					hideLoading(title, hint);
+				}
+			});
+			return;
+		}
+
 		wx.cloud.callFunction({
 			name: 'mcloud',
 			data: {
@@ -116,48 +162,7 @@ function callCloud(route, params = {}, options) {
 				params
 			},
 			success: function (res) {
-				if (res.result.code == CODE.LOGIC || res.result.code == CODE.DATA) {
-					console.log(res)
-					// 逻辑错误&数据校验错误 
-					if (hint) {
-						wx.showModal({
-							title: '温馨提示',
-							content: res.result.msg,
-							showCancel: false
-						});
-					}
-
-					reject(res.result);
-					return;
-				} else if (res.result.code == CODE.ADMIN_ERROR) {
-					// 后台登录错误
-					wx.reLaunch({
-						url: pageHelper.fmtURLByPID('/pages/admin/index/login/admin_login'),
-					});
-					//reject(res.result);
-					return;
-
-				} else if (res.result.code == CODE.WORK_ERROR) {
-					// 服务者登录错误
-					wx.reLaunch({
-						url: pageHelper.fmtURLByPID('/pages/work/index/login/work_login'),
-					});
-					//reject(res.result);
-					return;
-				}
-				else if (res.result.code != CODE.SUCC) {
-					if (hint) {
-						wx.showModal({
-							title: '温馨提示',
-							content: '系统开小差了，请稍后重试',
-							showCancel: false
-						});
-					}
-					reject(res.result);
-					return;
-				}
-
-				resolve(res.result);
+				handleCallResult(res.result, resolve, reject, hint);
 			},
 			fail: function (err) {
 				if (hint) {
@@ -165,14 +170,14 @@ function callCloud(route, params = {}, options) {
 					if (err && err.errMsg && err.errMsg.includes('-501000') && err.errMsg.includes('Environment not found')) {
 						wx.showModal({
 							title: '',
-							content: '未找到云环境ID，请按手册检查前端配置文件setting.js的配置项【CLOUD_ID】或咨询作者微信cclinux0730',
+							content: '未找到云环境ID，请按手册检查前端配置文件setting.js的配置项【CLOUD_ID】或联系平台管理员',
 							showCancel: false
 						});
 
 					} else if (err && err.errMsg && err.errMsg.includes('-501000') && err.errMsg.includes('FunctionName')) {
 						wx.showModal({
 							title: '',
-							content: '云函数未创建或者未上传，请参考手册或咨询作者微信cclinux0730',
+							content: '云函数未创建或者未上传，请参考手册或联系平台管理员',
 							showCancel: false
 						});
 
@@ -193,16 +198,54 @@ function callCloud(route, params = {}, options) {
 				return;
 			},
 			complete: function (res) {
-				if (hint) {
-					if (title == 'bar')
-						wx.hideNavigationBarLoading();
-					else
-						wx.hideLoading();
-				}
-				// complete
+				hideLoading(title, hint);
 			}
 		});
 	});
+}
+
+function hideLoading(title, hint) {
+	if (!hint) return;
+	if (title == 'bar')
+		wx.hideNavigationBarLoading();
+	else
+		wx.hideLoading();
+}
+
+function handleCallResult(result, resolve, reject, hint) {
+	if (result.code == CODE.LOGIC || result.code == CODE.DATA) {
+		if (hint) {
+			wx.showModal({
+				title: '温馨提示',
+				content: result.msg,
+				showCancel: false
+			});
+		}
+		reject(result);
+		return;
+	} else if (result.code == CODE.ADMIN_ERROR) {
+		wx.reLaunch({
+			url: pageHelper.fmtURLByPID('/pages/admin/index/login/admin_login'),
+		});
+		return;
+	} else if (result.code == CODE.WORK_ERROR) {
+		wx.reLaunch({
+			url: pageHelper.fmtURLByPID('/pages/work/index/login/work_login'),
+		});
+		return;
+	} else if (result.code != CODE.SUCC) {
+		if (hint) {
+			wx.showModal({
+				title: '温馨提示',
+				content: result.msg || '系统开小差了，请稍后重试',
+				showCancel: false
+			});
+		}
+		reject(result);
+		return;
+	}
+
+	resolve(result);
 }
 
 async function dataList(that, listName, route, params, options, isReverse = false) {
@@ -284,6 +327,7 @@ async function dataList(that, listName, route, params, options, isReverse = fals
 
 async function getTempFileURLOne(fileID) {
 	if (!fileID) return '';
+	if (setting.BACKEND_MODE !== 'cloud') return fileID;
 
 	let result = await wx.cloud.getTempFileURL({
 		fileList: [fileID],
@@ -296,14 +340,49 @@ async function getTempFileURLOne(fileID) {
 async function transTempPics(imgList, dir, id, prefix = '') {
 	if (setting.IS_DEMO) return imgList; 
 
+	if (setting.BACKEND_MODE === 'http') {
+		for (let i = 0; i < imgList.length; i++) {
+			let filePath = imgList[i];
+			if (!filePath || typeof filePath !== 'string') continue;
+			if (filePath.includes('tmp') || filePath.includes('temp') || filePath.includes('wxfile')) {
+				await new Promise((resolve) => {
+					wx.uploadFile({
+						url: setting.API_BASE_URL + '/api/upload',
+						filePath: filePath,
+						name: 'file',
+						success: function (res) {
+							try {
+								const result = JSON.parse(res.data);
+								if (result.code === 200 && result.data && result.data.url) {
+									imgList[i] = result.data.url;
+								}
+							} catch (e) {
+								console.error('Upload response parse error', e);
+							}
+							resolve();
+						},
+						fail: function (err) {
+							console.error('Upload file failed', err);
+							resolve();
+						}
+					});
+				});
+			}
+		}
+		return imgList;
+	}
+
+	if (setting.BACKEND_MODE !== 'cloud') return imgList;
+
 	if (prefix && !prefix.endsWith('_')) prefix += '_';
 	if (!id) id = timeHelper.time('YMD');
 
 	for (let i = 0; i < imgList.length; i++) {
 
 		let filePath = imgList[i];
-		let ext = filePath.match(/\.[^.]+?$/)[0];
-
+		if (!filePath || typeof filePath !== 'string') continue;
+		let match = filePath.match(/\.[^.]+?$/);
+		let ext = match ? match[0] : '.png';
 		// 是否为临时文件
 		if (filePath.includes('tmp') || filePath.includes('temp') || filePath.includes('wxfile')) {
 

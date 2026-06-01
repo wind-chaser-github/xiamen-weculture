@@ -8,6 +8,8 @@
 		"projects/culture/pages/my/edit/my_edit",
 		"projects/culture/pages/my/foot/my_foot",
 		"projects/culture/pages/my/fav/my_fav",
+		"projects/culture/pages/my/ai_chat/my_ai_chat",
+		"projects/culture/pages/my/ai_photos/my_ai_photos",
 		"projects/culture/pages/news/index/news_index",
 		"projects/culture/pages/news/detail/news_detail",
 		"projects/culture/pages/news/cate1/news_cate1",
@@ -63,17 +65,17 @@
 		"pages/test1/test1"
 	],
 	"window": {
-		"backgroundColor": "#f1f1f1",
+		"backgroundColor": "#F4FAF8",
 		"backgroundTextStyle": "dark",
-		"navigationBarBackgroundColor": "#AD683A",
-		"navigationBarTitleText": "文旅小程序",
+		"navigationBarBackgroundColor": "#0F8B8D",
+		"navigationBarTitleText": "厦门旅行指南",
 		"navigationBarTextStyle": "white"
 	},
 	"tabBar": {
 		"custom": false,
 		"backgroundColor": "#FFFFFF",
 		"color": "#999999",
-		"selectedColor": "#AD683A",
+		"selectedColor": "#0F8B8D",
 		"list": [
 			{
 				"pagePath": "projects/culture/pages/default/index/default_index",
@@ -83,19 +85,19 @@
 			},
 			{
 				"pagePath": "projects/culture/pages/product/index/product_index",
-				"text": "攻略",
+				"text": "景点",
 				"iconPath": "/projects/culture/images/tabbar/product.png",
 				"selectedIconPath": "/projects/culture/images/tabbar/product_cur.png"
 			},
 			{
 				"pagePath": "projects/culture/pages/activity/index/activity_index",
-				"text": "活动",
+				"text": "行程",
 				"iconPath": "/projects/culture/images/tabbar/activity.png",
 				"selectedIconPath": "/projects/culture/images/tabbar/activity_cur.png"
 			},
 			{
 				"pagePath": "projects/culture/pages/info/index/info_index",
-				"text": "游记",
+				"text": "发现",
 				"iconPath": "/projects/culture/images/tabbar/info.png",
 				"selectedIconPath": "/projects/culture/images/tabbar/info_cur.png"
 			},
@@ -119,6 +121,10 @@
 		"cmpt-comm-list": "/cmpts/public/list/comm_list_cmpt",
 		"cmpt-picker": "/cmpts/public/picker/picker_cmpt",
 		"cmpt-modal": "/cmpts/public/modal/modal_cmpt"
+	},
+	"networkTimeout": {
+		"request": 60000,
+		"connectSocket": 60000
 	},
 	"sitemapLocation": "sitemap.json"
 }

@@ -14,7 +14,9 @@ Page({
 		sortMenus: [],
 		sortItems: [],
 
-		isShowCate: projectSetting.ACTIVITY_CATE.length > 1
+		isShowCate: projectSetting.ACTIVITY_CATE.length > 1,
+		selectedTag: '浪漫情侣',
+		aiDays: ''
 	},
 
 	/**
@@ -68,6 +70,28 @@ Page({
 
 	url: async function (e) {
 		pageHelper.url(e, this);
+	},
+
+	onSelectTag: function (e) {
+		const tag = e.currentTarget.dataset.tag;
+		this.setData({
+			selectedTag: tag
+		});
+	},
+
+	onDaysInput: function (e) {
+		this.setData({
+			aiDays: e.detail.value
+		});
+	},
+
+	onAiGenerate: function () {
+		const tag = this.data.selectedTag;
+		const days = this.data.aiDays.trim() || '3天';
+		const prompt = `我想进行一次厦门的“${tag}”主题旅行，预计玩 ${days}，请帮我规划一份专属行程，并智能推荐适合这个主题的小程序真实景点和活动！`;
+		wx.navigateTo({
+			url: `../../my/ai_chat/my_ai_chat?prompt=${encodeURIComponent(prompt)}`
+		});
 	},
 
 	bindCommListCmpt: function (e) {

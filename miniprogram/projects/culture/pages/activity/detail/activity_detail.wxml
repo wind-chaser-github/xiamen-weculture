@@ -23,7 +23,7 @@
 				<view class="item">
 					<view class="left icon-moneybag"></view>
 					<view class="right">
-						<text class="txt1">活动费用</text>
+						<text class="txt1">参考费用</text>
 						<text class="txt2">{{activity.ACTIVITY_OBJ.fee}} 每人</text>
 					</view>
 				</view>
@@ -31,19 +31,19 @@
 					<view class="left icon-time"></view>
 					<view class="right">
 						<text class="txt1">{{activity.start}}</text>
-						<text class="txt2">预计活动时长{{activity.ACTIVITY_OBJ.time}}h</text>
+						<text class="txt2">预计游玩{{activity.ACTIVITY_OBJ.time}}h</text>
 					</view>
 				</view>
 			</view>
 		</view>
 
-		<view class="detail-title margin-top">活动地点</view>
+		<view class="detail-title margin-top">集合地点</view>
 		<view class="map" bindtap="bindOpenMapTap" data-address="{{activity.ACTIVITY_ADDRESS}}" data-geo="{{activity.ACTIVITY_ADDRESS_GEO}}">
 			<view class="desc"><text class="icon-location text-red"></text>{{activity.ACTIVITY_ADDRESS}}</view>
 			<text class="icon-right text-grey"></text>
 		</view>
 
-		<view class="detail-title margin-top">活动规则</view>
+		<view class="detail-title margin-top">行程规则</view>
 		<view class="detail">
 
 			<view class="rule">
@@ -52,7 +52,7 @@
 				<text class="text-orange" wx:else>{{activity.statusDesc}}</text>
 			</view>
 
-			<view class="rule"><text class="text-black">活动时间：</text>
+			<view class="rule"><text class="text-black">行程时间：</text>
 				<text user-select>{{activity.time}}</text>
 			</view>
 
@@ -75,7 +75,7 @@
 		</view>
 
 
-		<view class="detail-title margin-top">活动内容</view>
+		<view class="detail-title margin-top">行程亮点</view>
 		<view class="detail article-box ">
 			<view class="article  bg-gray">
 				<block wx:for="{{activity.ACTIVITY_OBJ.desc}}" wx:key="key">
@@ -91,17 +91,34 @@
 
 		</view>
 
+		<!-- AI 导游助读卡片 -->
+		<view class="ai-guide-card" bindtap="onAiAsk" data-title="{{activity.ACTIVITY_TITLE}}">
+			<view class="ai-header">
+				<text class="icon-communitymy ai-card-icon"></text>
+				<text class="ai-card-title">AI 私人导游阿鹭·智能提炼</text>
+			</view>
+			<view class="ai-card-body">
+				<view wx:if="{{!aiSummary}}" class="ai-card-loading">
+					<text class="icon-loading loading" style="margin-right: 10rpx;"></text>阿鹭正在提炼亮点与出行避堵贴士...
+				</view>
+				<text wx:else user-select="{{true}}" class="ai-summary-text">{{aiSummary}}</text>
+			</view>
+			<view class="ai-card-footer">
+				<text>点击与阿鹭深度对话，定制专属行程</text>
+				<text class="icon-right"></text>
+			</view>
+		</view>
 
 	</view>
 
 	<view style="height:200rpx"></view>
 
 
-	<cmpt-detail mode="mode2" topBtnShow="{{topBtnShow}}" tag="{{activity.myActivityJoinTag}}" oid="{{activity._id}}" cate="{{activity.ACTIVITY_CATE_NAME}}" title="{{activity.ACTIVITY_TITLE}}" cover="{{activity.ACTIVITY_OBJ.cover[0]}}" qr="{{activity.ACTIVITY_QR}}" desc="查看活动详情" bg="{{skin.PROJECT_COLOR}}">
+	<cmpt-detail mode="mode2" topBtnShow="{{topBtnShow}}" tag="{{activity.myActivityJoinTag}}" oid="{{activity._id}}" cate="{{activity.ACTIVITY_CATE_NAME}}" title="{{activity.ACTIVITY_TITLE}}" cover="{{activity.ACTIVITY_OBJ.cover[0]}}" qr="{{activity.ACTIVITY_QR}}" desc="查看行程详情" bg="{{skin.PROJECT_COLOR}}">
 		<view class="bottom-line">
 			<view bindtap="url" data-url="../../comment/list/comment_list?id={{id}}&type=activity" class="join comment   margin-right">评论 <text wx:if="{{activity.ACTIVITY_COMMENT_CNT>0}}">({{activity.ACTIVITY_COMMENT_CNT}})</text></view>
 
-			<view bindtap="bindJoinTap" wx:if="{{activity.statusDesc=='报名中'&&!activity.myActivityJoinId}}" class="join bg-project text-white">我要报名</view>
+			<view bindtap="bindJoinTap" wx:if="{{activity.statusDesc=='报名中'&&!activity.myActivityJoinId}}" class="join bg-project text-white">加入行程</view>
 			<view bindtap="bindCancelJoinTap" wx:elif="{{activity.myActivityJoinId}}" class="join bg-grey light">取消报名</view>
 			<view wx:else class="join bg-grey light">{{activity.statusDesc}}</view>
 		</view>

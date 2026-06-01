@@ -1,6 +1,7 @@
 const ProjectBiz = require('../../../biz/project_biz.js');
 const pageHelper = require('../../../../../helper/page_helper.js');
 const ProductBiz = require('../../../biz/product_biz.js');
+const cloudHelper = require('../../../../../helper/cloud_helper.js');
 
 Page({
 	/**
@@ -12,7 +13,8 @@ Page({
 
 		curMenu:'product_index',
 		sortMenus: [],
-		sortItems: []
+		sortItems: [],
+		aiRecommendText: ''
 	},
 
 	/**
@@ -35,6 +37,17 @@ Page({
 				isLoad: true
 			});
 		}
+
+		// 静默异步加载今日 AI 推荐出游指数建议
+		cloudHelper.callCloudData('ai/today_recommend', {}, { title: 'bar' }).then(res => {
+			if (res && res.recommend) {
+				this.setData({
+					aiRecommendText: res.recommend
+				});
+			}
+		}).catch(err => {
+			console.error(err);
+		});
 	},
 
 	/**
@@ -69,6 +82,19 @@ Page({
 
 	bindCommListCmpt: function (e) {
 		pageHelper.commListListener(this, e);
+		if (e.detail.dataList && e.detail.dataList.list) {
+			wx.showToast({
+				title: '加载了 ' + e.detail.dataList.list.length + ' 个景点',
+				icon: 'none',
+				duration: 3000
+			});
+		} else {
+			wx.showToast({
+				title: '获取列表为空',
+				icon: 'none',
+				duration: 3000
+			});
+		}
 	},
 
 

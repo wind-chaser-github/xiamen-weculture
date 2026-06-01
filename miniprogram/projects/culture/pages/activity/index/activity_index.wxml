@@ -1,8 +1,35 @@
-111<view wx:if="{{!isLoad}}" class="margin-top load loading text-l load-project"></view>
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l load-project"></view>
 <block wx:else>
 
-	<cmpt-comm-list type="activity-list" _params="{{_params}}" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" sortMenusDefaultIndex="0" route="activity/list" topBottom="120" isTotalMenu="{{true}}" placeholder="搜索" bind:list="bindCommListCmpt">
+	<cmpt-comm-list type="activity-list" _params="{{_params}}" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" sortMenusDefaultIndex="0" route="activity/list" topBottom="120" isTotalMenu="{{true}}" placeholder="搜索行程" bind:list="bindCommListCmpt">
 		<view class="main">
+			<view class="page-head">
+				<view class="kicker">ITINERARIES</view>
+				<view class="title">厦门精选行程</view>
+				<view class="desc">城市漫游、海岛路线、美食体验和夜游计划都在这里。</view>
+			</view>
+
+			<!-- AI 智能行程一键定制面板 -->
+			<view class="ai-generator-panel shadow-project">
+				<view class="ai-gen-header">
+					<view class="ai-gen-title">
+						<text class="icon-communitymy ai-gen-icon"></text>
+						<text>AI 一键行程规划定制</text>
+					</view>
+					<text class="ai-gen-badge">阿鹭导游</text>
+				</view>
+				
+				<view class="ai-gen-tags">
+					<view class="ai-gen-tag {{selectedTag === '浪漫情侣' ? 'ai-gen-tag-active' : ''}}" bindtap="onSelectTag" data-tag="浪漫情侣">浪漫情侣</view>
+					<view class="ai-gen-tag {{selectedTag === '亲子带娃' ? 'ai-gen-tag-active' : ''}}" bindtap="onSelectTag" data-tag="亲子带娃">亲子带娃</view>
+					<view class="ai-gen-tag {{selectedTag === '小众深度' ? 'ai-gen-tag-active' : ''}}" bindtap="onSelectTag" data-tag="小众深度">小众深度</view>
+				</view>
+				
+				<view class="ai-gen-form">
+					<input class="ai-gen-input" placeholder="输入天数，例如：2天 或 3天" value="{{aiDays}}" bindinput="onDaysInput" />
+					<button class="ai-gen-btn" bindtap="onAiGenerate">AI 智能规划</button>
+				</view>
+			</view>
 			<view class="list">
 				<view class="item card-project shadow-project" wx:for="{{dataList.list}}" wx:key="key" bindtap="url" data-url="../detail/activity_detail?id={{item._id}}">
 					<view class="left">
@@ -19,8 +46,8 @@
 								<view class="pic-group">
 									<image wx:for="{{item.ACTIVITY_USER_LIST}}" wx:for-index="idx" wx:key="key" wx:if="{{idx<3}}" wx:for-item="itm" class="pic round loading" mode="aspectFill" lazy-load="{{true}}" src="{{itm.USER_PIC}}" />
 								</view>
-								<text wx:if="{{item.ACTIVITY_JOIN_CNT}}" class="num">+{{item.ACTIVITY_JOIN_CNT}}人报名</text>
-								<text wx:else class="num">{{item.ACTIVITY_JOIN_CNT}}人报名</text>
+								<text wx:if="{{item.ACTIVITY_JOIN_CNT}}" class="num">+{{item.ACTIVITY_JOIN_CNT}}人加入</text>
+								<text wx:else class="num">{{item.ACTIVITY_JOIN_CNT}}人加入</text>
 							</view>
 							<view class="join {{item.statusDesc=='报名中'?'comm':''}}">
 								<text wx:if="{{item.statusDesc=='报名中'}}">报名中</text>

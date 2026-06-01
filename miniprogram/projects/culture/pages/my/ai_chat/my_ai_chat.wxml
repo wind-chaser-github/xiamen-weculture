@@ -1,0 +1,68 @@
+<view class="container">
+  <!-- 滚动聊天区域 -->
+  <scroll-view class="chat-scroll" scroll-y scroll-into-view="{{toView}}" scroll-with-animation>
+    <view class="chat-list">
+      <block wx:for="{{chatList}}" wx:key="index">
+        <!-- 每一条消息 -->
+        <view id="item_{{index}}" class="chat-item {{item.role === 'user' ? 'chat-user' : 'chat-ai'}}">
+          
+          <!-- 头像 -->
+          <view class="avatar">
+            <image wx:if="{{item.role === 'user'}}" class="avatar-img" src="{{userPic || '/projects/culture/images/tabbar/my_cur.png'}}" mode="aspectFill" />
+            <image wx:else class="avatar-img" src="/projects/culture/images/tabbar/home_cur.png" mode="aspectFill" />
+          </view>
+
+          <!-- 气泡与内容 -->
+          <view class="bubble-wrap">
+            <view class="bubble">
+              <text class="msg-text" user-select>{{item.cleanText}}</text>
+            </view>
+
+            <!-- 景点/行程推荐卡片区域 -->
+            <view wx:if="{{item.recommends && item.recommends.length > 0}}" class="recommend-box">
+              <view class="recommend-title">
+                <text class="icon-favorfill text-orange"></text> 为你推荐以下厦门文旅项目：
+              </view>
+              <view wx:for="{{item.recommends}}" wx:for-item="rec" wx:for-index="rIdx" wx:key="rIdx" class="recommend-card" bindtap="goDetail" data-url="{{rec.url}}">
+                <view class="rec-left">
+                  <view class="rec-title">{{rec.title}}</view>
+                  <view class="rec-hint">直接点击，去查看项目详情</view>
+                </view>
+                <view class="rec-right">
+                  <text class="icon-right text-grey"></text>
+                </view>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </block>
+
+      <!-- AI 正在思考的打字加载动画 -->
+      <view id="thinking_node" wx:if="{{thinking}}" class="chat-item chat-ai thinking-item">
+        <view class="avatar">
+          <image class="avatar-img" src="/projects/culture/images/tabbar/home_cur.png" mode="aspectFill" />
+        </view>
+        <view class="bubble-wrap">
+          <view class="bubble thinking-bubble">
+            <view class="dot"></view>
+            <view class="dot"></view>
+            <view class="dot"></view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <view style="height: 150rpx;"></view>
+  </scroll-view>
+
+  <!-- 底部输入栏 -->
+  <view class="input-panel">
+    <view class="input-box">
+      <input class="input-field" confirm-type="send" bindconfirm="onSend" placeholder="问问 AI 厦门好玩的地方或行程规划..." value="{{inputVal}}" bindinput="onInput" />
+      <button class="send-btn {{inputVal.length > 0 ? 'send-btn-active' : ''}}" bindtap="onSend" disabled="{{thinking}}">
+        发送
+      </button>
+    </view>
+  </view>
+</view>

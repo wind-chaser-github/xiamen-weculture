@@ -30,9 +30,9 @@ class AdminHomeService extends BaseProjectAdminService {
 		return [
 			{ title: '用户数', cnt: userCnt },
 			{ title: '公告', cnt: newsCnt },
-			{ title: '活动', cnt: activityCnt },
-			{ title: '游记', cnt: infoCnt },
-			{ title: '攻略', cnt: productCnt },
+			{ title: '行程', cnt: activityCnt },
+			{ title: '旅行灵感', cnt: infoCnt },
+			{ title: '景点', cnt: productCnt },
 		]
 	}
 

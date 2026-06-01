@@ -11,6 +11,7 @@ Page({
 	 */
 	data: {
 		isLoad: false, 
+		aiSummary: ''
 	},
 
 	/**
@@ -48,7 +49,25 @@ Page({
 		this.setData({
 			isLoad: true,
 			activity,
+			aiSummary: ''
 		});  
+
+		// 异步静默加载 AI 对该行程的亮点和避坑提炼
+		cloudHelper.callCloudData('ai/summarize', { type: 'activity', title: activity.ACTIVITY_TITLE }, { title: 'bar' }).then(res => {
+			if (res && res.summary) {
+				this.setData({
+					aiSummary: res.summary
+				});
+			} else {
+				this.setData({
+					aiSummary: '智能导游阿鹭暂未总结此行程亮点，点击直接对话提问！'
+				});
+			}
+		}).catch(err => {
+			this.setData({
+				aiSummary: '智能导游阿鹭暂未总结此行程亮点，点击直接对话提问！'
+			});
+		});
 	}, 
 
 	/**
@@ -110,6 +129,13 @@ Page({
 	url: function (e) {
 		pageHelper.url(e, this);
 	}, 
+
+	onAiAsk: function (e) {
+		const title = e.currentTarget.dataset.title;
+		wx.navigateTo({
+			url: `../../my/ai_chat/my_ai_chat?prompt=我想参加行程“${title}”，能帮我详细规划下沿途玩法和周边的美食交通吗？`
+		});
+	},
 
 	onPageScroll: function (e) {
 		// 回页首按钮

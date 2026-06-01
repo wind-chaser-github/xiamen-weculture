@@ -35,13 +35,13 @@
 		<view class="item" bindtap="url" data-url="../../news/list/admin_news_list"> <text class="icon-notificationfill text-darkgreen"></text> <text class="text-black">公告/服务</text>
 		</view>
 
-		<view class="item" bindtap="url" data-url="../../product/list/admin_product_list"> <text class="icon-picfill text-orange"></text> <text class="text-black">旅行攻略</text>
+		<view class="item" bindtap="url" data-url="../../product/list/admin_product_list"> <text class="icon-picfill text-orange"></text> <text class="text-black">景点指南</text>
 		</view>
 
-		<view class="item" bindtap="url" data-url="../../activity/list/admin_activity_list"> <text class="icon-activityfill text-purple"></text> <text class="text-black">活动与名单管理</text>
+		<view class="item" bindtap="url" data-url="../../activity/list/admin_activity_list"> <text class="icon-activityfill text-purple"></text> <text class="text-black">行程与名单管理</text>
 		</view>
 
-		<view class="item" bindtap="url" data-url="../../info/list/admin_info_list"> <text class="icon-writefill text-blue"></text> <text class="text-black">游记管理</text>
+		<view class="item" bindtap="url" data-url="../../info/list/admin_info_list"> <text class="icon-writefill text-blue"></text> <text class="text-black">灵感管理</text>
 		</view>
 		
 	</view>

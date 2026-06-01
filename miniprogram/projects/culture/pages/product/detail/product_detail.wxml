@@ -22,6 +22,63 @@
 			</block>
 			<!-- article content end -->
 
+			<!-- AI 历史时空穿梭镜 begin -->
+			<view class="ai-history-section shadow-project" wx:if="{{product.historyImages && product.historyImages.length > 0}}">
+				<view class="ai-history-header">
+					<view class="ai-history-title">
+						<text class="icon-explore ai-history-icon"></text>
+						<text>AI 历史时空穿梭镜</text>
+					</view>
+					<text class="ai-history-tag">时空影像</text>
+				</view>
+				
+				<scroll-view class="ai-history-scroll" scroll-x="true" show-scrollbar="{{false}}" enhanced="{{true}}">
+					<view class="ai-history-list">
+						<view class="ai-history-card" wx:for="{{product.historyImages}}" wx:key="index" bindtap="onPreviewHistoryImage" data-current="{{item.img}}">
+							<view class="ai-history-img-wrap">
+								<image class="ai-history-img loading" mode="aspectFill" lazy-load="{{true}}" src="{{item.img}}"></image>
+								<view class="ai-history-badge">{{item.time}}</view>
+							</view>
+							<view class="ai-history-desc-box">
+								<text class="ai-history-desc">{{item.desc}}</text>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+			<!-- AI 历史时空穿梭镜 END -->
+
+			<!-- AI 景点合照入口 -->
+			<view class="ai-photo-card" bindtap="onAiPhoto">
+				<view class="ai-photo-left">
+					<text class="icon-camera ai-photo-icon"></text>
+					<view class="ai-photo-text">
+						<text class="ai-photo-title">AI 景点打卡合照</text>
+						<text class="ai-photo-subtitle">上传自拍，一键生成专属穿越明信片</text>
+					</view>
+				</view>
+				<text class="icon-right"></text>
+			</view>
+			<!-- AI 景点合照入口 END -->
+
+			<!-- AI 导游助读卡片 -->
+			<view class="ai-guide-card" bindtap="onAiAsk" data-title="{{product.PRODUCT_TITLE}}">
+				<view class="ai-header">
+					<text class="icon-communitymy ai-card-icon"></text>
+					<text class="ai-card-title">AI 私人导游阿鹭·智能提炼</text>
+				</view>
+				<view class="ai-card-body">
+					<view wx:if="{{!aiSummary}}" class="ai-card-loading">
+						<text class="icon-loading loading" style="margin-right: 10rpx;"></text>阿鹭正在提炼亮点与防坑避堵建议...
+					</view>
+					<text wx:else user-select="{{true}}" class="ai-summary-text">{{aiSummary}}</text>
+				</view>
+				<view class="ai-card-footer">
+					<text>点击与阿鹭深度对话，定制专属行程</text>
+					<text class="icon-right"></text>
+				</view>
+			</view>
+
 		</view>
 		<!-- article content end -->
 
@@ -29,5 +86,31 @@
 
 	</view>
 
-	<cmpt-detail mode="mode1" topBtnShow="{{topBtnShow}}" oid="{{product._id}}" cate="{{product.PRODUCT_CATE_NAME}}" title="{{product.PRODUCT_TITLE}}" cover="{{product.PRODUCT_OBJ.cover}}" qr="{{product.PRODUCT_QR}}" desc="查看详情"  bg="{{skin.PROJECT_COLOR}}"></cmpt-detail>
+	<cmpt-detail mode="mode1" topBtnShow="{{topBtnShow}}" oid="{{product._id}}" cate="{{product.PRODUCT_CATE_NAME}}" title="{{product.PRODUCT_TITLE}}" cover="{{product.PRODUCT_OBJ.cover[0]}}" qr="{{product.PRODUCT_QR}}" desc="查看景点详情"  bg="{{skin.PROJECT_COLOR}}"></cmpt-detail>
+
+	<!-- AI合照弹窗 -->
+	<view class="ai-photo-modal {{showAiPhotoModal ? 'show' : ''}}" wx:if="{{showAiPhotoModal}}">
+		<view class="ai-photo-mask" bindtap="closeAiPhotoModal"></view>
+		<view class="ai-photo-dialog">
+			<view class="ai-photo-close" bindtap="closeAiPhotoModal"><text class="icon-close"></text></view>
+			
+			<view class="ai-photo-content" wx:if="{{isGeneratingPhoto}}">
+				<view class="ai-generating-loader">
+					<view class="loader-circle"></view>
+					<text class="icon-camera ai-generating-icon"></text>
+				</view>
+				<text class="ai-generating-text">正在通过智能 AI 合成专属打卡照\n请耐心等待 5-10 秒...</text>
+			</view>
+
+			<view class="ai-photo-content" wx:if="{{!isGeneratingPhoto && generatedPhotoUrl}}">
+				<view class="ai-result-title">跨时空打卡成功 ✨</view>
+				<image class="ai-result-img" mode="aspectFit" show-menu-by-longpress="true" src="{{generatedPhotoUrl}}" bindtap="previewGeneratedPhoto"></image>
+				<view class="ai-result-actions">
+					<button class="ai-btn-save" bindtap="saveGeneratedPhoto">保存到相册</button>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- AI合照弹窗 END -->
+
 </block>

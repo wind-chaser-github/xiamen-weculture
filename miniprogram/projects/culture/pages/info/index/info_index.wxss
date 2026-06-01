@@ -1,6 +1,37 @@
 @import "../../../../../style/public/article_list.wxss";
 @import "../../../style/skin.wxss";
 
+page {
+	background: var(--projectCompareColor);
+}
+
+.page-head {
+	margin: 20rpx 30rpx 10rpx;
+	padding: 32rpx;
+	border-radius: 26rpx;
+	background: #fff;
+	box-shadow: 0 10rpx 28rpx rgba(17, 52, 59, .08);
+}
+
+.page-head .kicker {
+	color: var(--projectColor);
+	font-size: 20rpx;
+	font-weight: 700;
+}
+
+.page-head .title {
+	color: #12343B;
+	font-size: 42rpx;
+	font-weight: 800;
+	margin-top: 10rpx;
+}
+
+.page-head .desc {
+	color: #6C7A7D;
+	font-size: 24rpx;
+	line-height: 1.5;
+	margin-top: 12rpx;
+}
 
 .post {
 	width: 100%;
@@ -38,7 +69,7 @@
 	margin: 10rpx auto 20rpx;
 	background: #fff;
 	width: 98%;
-	border-radius: 10rpx;
+	border-radius: 20rpx;
 	position: relative;
 	overflow: hidden;
 }
@@ -61,11 +92,11 @@
 	top: 10rpx;
 	right: 10rpx;
 	z-index: 9;
-	background-color: rgba(199, 135, 72, .7);
+	background-color: rgba(15, 139, 141, .82);
 	color: #fff;
 	font-size: 20rpx;
 	padding: 8rpx 10rpx;
-	border-radius: 100% 89% 100% 100% / 90% 99% 92% 25%;
+	border-radius: 999rpx;
 }
 
 .content-item-img .view {
@@ -91,7 +122,8 @@
 
 .content-item-box .line1 {
 	font-size: 24rpx;
-	color: var(--projectColor)
+	color: #12343B;
+	font-weight: 700;
 }
 
 .content-item-box .line2 {

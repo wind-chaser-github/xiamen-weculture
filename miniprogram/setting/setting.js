@@ -1,10 +1,12 @@
-﻿module.exports = {
+module.exports = {
 	//### 环境相关 
-	CLOUD_ID: 'cloud1-3go08kosfd9d453c', //云服务id ,本地测试环境 
+	CLOUD_ID: '', //仅 BACKEND_MODE='cloud' 时需要填写
+	BACKEND_MODE: 'http', //local=本地示例数据，http=自有服务器接口，cloud=微信云开发
+	API_BASE_URL: 'https://tagen-preview.taowhale.com', //BACKEND_MODE='http' 时改成你的服务器地址
 
 	// #### 版本信息 
 	VER: 'build 2023.10.01',
-	COMPANY: '联系作者',
+	COMPANY: '厦门旅行指南',
 
 	// #### 系统参数 
 	IS_SUB: false, //分包模式 

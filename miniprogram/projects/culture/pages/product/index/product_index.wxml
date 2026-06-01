@@ -1,13 +1,33 @@
 <view wx:if="{{!isLoad}}" class="margin-top load loading text-l load-project"></view>
 <block wx:else>
-	<cmpt-comm-list type="product-list" sortMenusDefaultIndex="0" _params="{{_params}}" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="product/list" topBottom="120" placeholder="搜索" bind:list="bindCommListCmpt">
+	<cmpt-comm-list type="product-list" sortMenusDefaultIndex="0" _params="{{_params}}" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="product/list" topBottom="120" placeholder="搜索厦门景点" bind:list="bindCommListCmpt">
 
+		<view class="page-head">
+			<view class="kicker">DESTINATIONS</view>
+			<view class="title">厦门景点指南</view>
+			<view class="desc">按区域和玩法筛选鼓浪屿、环岛路、沙坡尾、集美学村等目的地。</view>
+		</view>
+
+		<!-- AI 今日出游智能推荐气象站 -->
+		<view class="ai-weather-station shadow-project" wx:if="{{aiRecommendText}}">
+			<view class="ai-ws-header">
+				<view class="ai-ws-title">
+					<text class="icon-communitymy ai-ws-icon"></text>
+					<text>阿鹭今日出游金句</text>
+				</view>
+				<text class="ai-ws-tag">AI 智能分析</text>
+			</view>
+			<view class="ai-ws-body">
+				<text class="ai-ws-text" user-select>{{aiRecommendText}}</text>
+			</view>
+		</view>
 		<view class="list">
 			<view class="item" wx:for="{{dataList.list}}" wx:key="key" bindtap="url" data-url="../detail/product_detail?id={{item._id}}">
 				<view class="item-inner">
 					<view class="mark">{{item.PRODUCT_CATE_NAME}}</view>
 					<image mode="aspectFill" class="loading shadow" lazy-load="{{true}}" src="{{item.PRODUCT_OBJ.cover[0]}}" shadow></image>
 					<view class="title content-cut-one">{{item.PRODUCT_TITLE}}</view>
+					<view class="meta">查看目的地指南</view>
 				</view>
 
 			</view>
