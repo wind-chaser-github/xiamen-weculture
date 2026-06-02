@@ -13,7 +13,7 @@ const { db, initDb, saveDb } = require('./db.js');
 const WebSocket = require('ws');
 
 // 微信小程序配置
-const WX_APPID = 'wxb100b44af794708e';
+const WX_APPID = 'wx422054047f9869b4';
 const WX_SECRET = process.env.WX_APP_SECRET || ''; // 建议运行命令时提供，或直接从环境变量读取
 
 // 微信 code 换 openid 函数
@@ -204,7 +204,8 @@ function handleUpload(req, res) {
 			fs.writeFileSync(filepath, fileData);
 
 			const host = req.headers.host || '127.0.0.1:3000';
-			const url = `http://${host}/public/uploads/${filename}`;
+			const protocol = (host.includes('127.0.0.1') || host.includes('localhost') || host.includes('3005')) ? 'http' : 'https';
+			const url = `${protocol}://${host}/public/uploads/${filename}`;
 
 			console.log(`[Upload Request] File successfully uploaded. Saved to: ${filepath}, public url: ${url}`);
 			sendJson(res, 200, ok({ url }));
